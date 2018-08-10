@@ -1,28 +1,28 @@
 // Binary Search in Array
 
 let createRandomList = function createRandomList(length, holdValue) {
+    console.time();
     let arr = [];
+    let lookupTable = {};
     while(length--) {
         let value = Math.ceil(Math.random() * (new Date()) % holdValue);
-        let arrLength = arr.length;
         let hasValue = false;
-        while(arrLength--) {
-            if(arr[arrLength - 1] == value) {
-                hasValue = true;
-                break;
-            }
-        }
-        if(hasValue) {
+        
+        if(lookupTable[value]) {
+            hasValue = true;
             length++;
             continue;
-        }
+        } else {
+            lookupTable[value] = true;
+        }        
         arr.push(value);
     }
     return arr.map((v)=>Number(v)).sort((a , b) => { return a >= b ? 1 : -1});
 }
-let list = createRandomList(10000, 20000);
+let list = createRandomList(1000000, 2000000);
 
 let findOut = function findOut(list, value) {
+    console.timeEnd(); 
    let pivot = 0;
    let bottom = 0;
    let top = list.length -1;   
