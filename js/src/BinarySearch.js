@@ -5,17 +5,14 @@ let createRandomList = function createRandomList(length, holdValue) {
     let arr = [];
     let lookupTable = {};
     while(length--) {
-        let value = Math.ceil(Math.random() * (new Date()) % holdValue);
-        let hasValue = false;
-        
+        let value = Math.ceil(Math.random() * (new Date()) % holdValue);        
         if(lookupTable[value]) {
-            hasValue = true;
             length++;
             continue;
         } else {
             lookupTable[value] = true;
+            arr.push(value);
         }        
-        arr.push(value);
     }
     return arr.map((v)=>Number(v)).sort((a , b) => { return a >= b ? 1 : -1});
 }
