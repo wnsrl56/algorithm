@@ -1,6 +1,6 @@
 // Binary Search in Array
 
-let createRandomList = function createRandomList(length, holdValue) {
+let createRandomList = (length, holdValue) => {
     console.time();
     let arr = [];
     let lookupTable = {};
@@ -18,7 +18,7 @@ let createRandomList = function createRandomList(length, holdValue) {
 }
 let list = createRandomList(1000000, 2000000);
 
-let findOut = function findOut(list, value) {
+let findOut = (list, value) => {
     console.timeEnd(); 
    let pivot = 0;
    let bottom = 0;
@@ -44,5 +44,6 @@ let findOut = function findOut(list, value) {
         }
    }    
 }
-   
-findOut(list, 1345);
+
+const bs = { findOut };
+module.exports = bs;
